@@ -30,7 +30,7 @@ export default function Home() {
             1. 설문자의 연령대과 성별을 선택해주세요
           </h3>
 
-          <section className="rounded-2xl bg-white flex flex-col justify-evenly px-10 w-[500px] h-[180px] bg-[#0091ff20] shadow-md">
+          <section className="rounded-2xl bg-white flex border-[#cccccc] border-[1.5px] flex-col justify-evenly px-10 w-[500px] h-[180px] bg-[#0091ff20] shadow-md">
             <h3 className="text-[18px] font-medium">(1) 나이</h3>
             <div className="flex gap-3 -mt-4">
               {ageArr.map((el) => (
@@ -43,7 +43,7 @@ export default function Home() {
               ))}
             </div>
           </section>
-          <section className="rounded-2xl bg-white flex justify-evenly flex-col px-10 w-[500px] h-[180px] bg-[#0091ff20] shadow-md">
+          <section className="rounded-2xl bg-white flex border-[#cccccc] border-[1.5px] justify-evenly flex-col px-10 w-[500px] h-[180px] bg-[#0091ff20] shadow-md">
             <h3 className="text-[18px] font-medium">(2) 성별</h3>
             <div className="flex gap-3 -mt-4">
               {sexArr.map((el) => (
