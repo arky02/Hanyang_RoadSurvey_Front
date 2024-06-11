@@ -41,10 +41,14 @@ function ChoicePage() {
         성동구 보행 환경 인식에 대한 설문
       </div>
 
-      <section
-        style={imgRenderState < 2 ? { visibility: "hidden" } : {}}
-        className="flex flex-col gap-[60px] bg-white p-[55px] rounded-2xl items-center mt-[70px]"
-      >
+      <section className="flex flex-col gap-[60px] bg-white p-[55px] rounded-2xl items-center mt-[70px] relative h-[750px]">
+        <div className="w-full h-[5px]  absolute top-[0.2px] px-[8.5px] rounded-full">
+          <div className="w-full h-full bg-[#e5e5e5] rounded-full relative"></div>
+          <div
+            className="w-full h-full bg-[#0091ff] rounded-full absolute z-9 top-0 ease-in-out duration-300"
+            style={{ width: `${(round / 15) * 100 - 1}%` }}
+          ></div>
+        </div>
         <h1 className="text-[40px] font-bold text-[#0091ff] -mb-[23px]">
           ROUND {round}
         </h1>
@@ -52,7 +56,10 @@ function ChoicePage() {
           두 사진 중 어느 곳이 더 안전해보이나요?
         </h3>
 
-        <div className="flex gap-[60px]">
+        <div
+          className="flex gap-[60px]"
+          style={imgRenderState < 2 ? { visibility: "hidden" } : {}}
+        >
           <div
             className={`${
               selectedImg === 0 && "border-[#0091ff] border-[10px]"
@@ -71,7 +78,7 @@ function ChoicePage() {
               onLoad={() => setImgRenderState((prev) => ++prev)}
             />
             <div className="absolute top-3 left-2.5 w-[50px] h-[50px] rounded-full bg-white shadow-md flex items-center justify-center font-bold text-[20px] text-[#2f2f2f]">
-              {currImgNum}
+              {currImgNum + 1}
             </div>
           </div>
           <div
@@ -94,7 +101,7 @@ function ChoicePage() {
               onLoad={() => setImgRenderState((prev) => ++prev)}
             ></Image>
             <div className="absolute top-3 left-2.5 w-[50px] h-[50px] rounded-full bg-white shadow-md flex items-center justify-center font-bold text-[20px] text-[#2f2f2f]">
-              {currImgNum + 1}
+              {currImgNum + 2}
             </div>
           </div>
         </div>
@@ -108,7 +115,7 @@ function ChoicePage() {
       </section>
 
       {imgRenderState < 2 && (
-        <div className=" z-[100px] fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="z-[100px] absolute top-[500px]">
           <MutatingDots
             color="#0091ff"
             secondaryColor="#60bfff"
