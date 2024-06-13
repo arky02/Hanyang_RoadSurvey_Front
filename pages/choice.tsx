@@ -167,7 +167,7 @@ function ChoicePage() {
               radius="16"
             />
           </div>
-          <div className="z-[100px] absolute top-[500px] md:hidden">
+          <div className="z-[100px] absolute top-[300px] md:hidden">
             <MutatingDots
               color="#0091ff"
               secondaryColor="#60bfff"
