@@ -156,7 +156,7 @@ function ChoicePage() {
         </div>
       )}
 
-      {currRound <= 29 && !isImgRendered && (
+      {/* {currRound <= 29 && !isImgRendered && (
         <>
           <div className="z-[100px] absolute top-[500px] hidden md:block">
             <MutatingDots
@@ -177,7 +177,7 @@ function ChoicePage() {
             />
           </div>
         </>
-      )}
+      )} */}
     </main>
   );
 }
