@@ -57,13 +57,13 @@ function ChoicePage() {
   }, []);
 
   return (
-    <main className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d] ">
-      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
+    <main className="flex justify-center items-center md:h-[100vh] md:bg-[#0091ff4d] ">
+      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
         성동구 보행 환경 인식에 대한 설문
       </div>
 
-      {currImgIdx <= 28 ? (
-        <section className="bg-white md:py-[60px] rounded-2xl md:mt-[70px] md:relative md:h-[765px] h-fit">
+      {currImgIdx <= 29 ? (
+        <section className="bg-white md:py-[60px] rounded-2xl mt-[73px] md:relative md:h-[765px] h-fit">
           <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#e5e5e5] md:rounded-full relative"></div>
             <div
@@ -98,7 +98,7 @@ function ChoicePage() {
             <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[63px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[18px] text-[#FFFFFF] bg-[#0091ff] font-bold">
+            <div className="lg:hidden block absolute top-[65px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
             <div className="flex relative flex-col md:w-[600px] w-[300px] items-center ">
@@ -126,11 +126,11 @@ function ChoicePage() {
                     <button
                       key={idx}
                       style={{ backgroundColor: "#" + el[1] }}
-                      className={`rounded-full md:text-[40px] text-[30px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[50px] hover:text-[38px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[56px] hover:w-[56px] ${
+                      className={`rounded-full md:text-[40px] text-[29px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[50px] hover:text-[38px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[56px] hover:w-[56px] ${
                         isImgRendered && "ease-in-out duration-150"
                       } ${
                         tempRoundResult[selectState] === idx
-                          ? "md:h-[77px] md:w-[77px] w-[56px] h-[56px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[38px] hover:text-[35px] md:text-[50px] md:hover:text-[50px]"
+                          ? "md:h-[77px] md:w-[77px] w-[56px] h-[56px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[38.5px] hover:text-[35px] md:text-[50px] md:hover:text-[50px]"
                           : ""
                       }`}
                       onClick={() =>
@@ -155,7 +155,7 @@ function ChoicePage() {
           </div>
         </section>
       ) : (
-        <div className="font-bold md:text-[40px] text-[20px] text-center">
+        <div className="font-bold md:text-[40px] text-[20px] text-center h-[100vh] flex items-center">
           {" "}
           설문이 종료되었습니다.
           <br /> 감사합니다.
