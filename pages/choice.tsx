@@ -54,13 +54,13 @@ function ChoicePage() {
 
   return (
     <main className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d] ">
-      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-2 md:text-[20px] text-[12px]">
+      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
         성동구 보행 환경 인식에 대한 설문
       </div>
 
       {currImgIdx <= 28 ? (
         <section className="bg-white md:py-[60px] rounded-2xl md:mt-[70px] mt-[30px] md:relative md:h-[765px] h-fit">
-          <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[34px] md:px-[8.5px] md:rounded-full left-[0px]">
+          <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#e5e5e5] md:rounded-full relative"></div>
             <div
               className="w-full h-full bg-[#0091ff] md:rounded-full absolute z-9 top-0 ease-in-out duration-300"
@@ -80,11 +80,11 @@ function ChoicePage() {
                 </span>{" "}
                 해당 구역의 안전성을 평가해주세요
               </h3>
-              <h3 className="md:hidden block text-[14px] font-bold">
+              <h3 className="md:hidden block text-[17px] font-bold">
                 {!selectState ? "1. 교통" : "2. 범죄"}
               </h3>
 
-              <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[11px] w-[170px] md:w-full">
+              <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[14px] w-[170px] md:w-full">
                 {!selectState
                   ? '"이 곳에서 길을 걷거나 운전을 한다면 안전할까요?"'
                   : '"이 곳이 범죄로부터 얼마나 안전해 보이나요?"'}
@@ -98,20 +98,22 @@ function ChoicePage() {
               {currImgIdx + 1}R
             </div>
             <div className="flex relative flex-col md:w-[600px] w-[190px] items-center">
-              <Image
-                src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
-                className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[180px] h-fit lg:w-[350px] lg:h-[350px]"
-                alt="img"
-                width={350}
-                height={350}
-                onLoad={() => setIsImgRendered(true)}
-              />
-              <section className="md:w-[500px] w-[180px] md:mt-4 mt-2">
+              {randImgNumList[currImgIdx] && (
+                <Image
+                  src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
+                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[180px] h-fit md:w-[350px] md:h-[350px]"
+                  alt="img"
+                  width={350}
+                  height={350}
+                  onLoad={() => setIsImgRendered(true)}
+                />
+              )}
+              <section className="md:w-[500px] w-[200px] md:mt-4 mt-3.5">
                 <div className="flex justify-between ">
-                  <h2 className="md:text-[18px] text-[12px] font-bold text-[#501919]">
+                  <h2 className="md:text-[18px] text-[14px] font-bold text-[#501919]">
                     위험해요
                   </h2>
-                  <h2 className="md:text-[18px] text-[12px] font-bold text-[#252065]">
+                  <h2 className="md:text-[18px] text-[14px] font-bold text-[#252065]">
                     안전해요
                   </h2>
                 </div>
@@ -120,11 +122,11 @@ function ChoicePage() {
                     <button
                       key={idx}
                       style={{ backgroundColor: "#" + el[1] }}
-                      className={`rounded-full md:text-[40px] text-[12px] md:w-[62px] md:h-[62px] w-[25px] h-[25px] hover:shadow-xl md:hover:text-[50px] hover:text-[16px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[33px] hover:w-[33px] ${
+                      className={`rounded-full md:text-[40px] text-[15px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[25px] h-[25px] hover:shadow-xl md:hover:text-[50px] hover:text-[16px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[33px] hover:w-[33px] ${
                         isImgRendered && "ease-in-out duration-150"
                       } ${
                         tempRoundResult[selectState] === idx
-                          ? "md:h-[77px] md:w-[77px] h-[33px] w-[33px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[20px] hover:text-[15px] md:text-[50px] md:hover:text-[50px]"
+                          ? "md:h-[77px] md:w-[77px] h-[33px] w-[33px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[20px] hover:text-[20px] md:text-[50px] md:hover:text-[50px]"
                           : ""
                       }`}
                       onClick={() =>
@@ -141,7 +143,7 @@ function ChoicePage() {
             </div>
 
             <button
-              className="md:w-[800px] w-[150px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[12px] md:text-[17px] md:py-3 py-1 shadow-md md:mt-0 mt-1"
+              className="md:w-[800px] w-[150px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-3 py-1 shadow-md md:mt-0 mt-1"
               onClick={handleClick}
             >
               {!selectState ? "다음" : "다음 라운드로 이동하기"}

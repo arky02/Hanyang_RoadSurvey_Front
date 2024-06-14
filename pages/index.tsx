@@ -22,17 +22,17 @@ export default function Home() {
 
   return (
     <main className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d]">
-      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-2 md:text-[20px] text-[12px]">
+      <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
         성동구 보행 환경 인식에 대한 설문
       </div>
-      <section className="mt-[70px] bg-white rounded-2xl w-[750px] md:shadow-md h-[800px] py-[100px] flex items-center justify-center md:mt-[70px] mt-[30px]">
+      <section className="mt-[70px] bg-white rounded-2xl w-[750px] md:shadow-md h-[800px] py-[10px] flex items-center justify-center md:mt-[70px] ">
         <div className="flex flex-col md:gap-[60px] gap-[30px] w-fit items-center md:items-start">
-          <h3 className="md:text-[20px] text-[15px] text-[#2f2f2f] md:w-fit font-medium w-[180px] text-center ">
+          <h3 className="md:text-[20px] text-[16px] text-[#2f2f2f] md:w-fit font-bold  ">
             1. 설문자의 연령대과 성별을 선택해주세요
           </h3>
-          <section className="rounded-2xl bg-white flex flex-col justify-evenly md:px-10 md:w-[500px]  md:h-[400px] bg-[#0091ff20] shadow-md md:gap-[10px] gap-[5px] p-[20px] mx-[10px]">
-            <h3 className="md:text-[18px] text-[12px] font-medium">(1) 나이</h3>
-            <div className="flex md:gap-3 gap-1 md:-mt-4">
+          <section className="rounded-2xl bg-white flex flex-col justify-evenly md:px-10 md:w-[500px]  md:h-[400px] bg-[#0091ff20] shadow-md md:gap-[10px] gap-[5px] px-[20px] py-[35px] mx-[10px]">
+            <h3 className="md:text-[18px] text-[16px] font-medium">(1) 나이</h3>
+            <div className="flex md:gap-3 gap-2 md:-mt-4">
               {ageArr.map((el) => (
                 <SmallBtn
                   key={el}
@@ -43,7 +43,7 @@ export default function Home() {
               ))}
             </div>
 
-            <h3 className="md:text-[18px] text-[12px] font-medium md:mt-0 mt-[30px]">
+            <h3 className="md:text-[18px] text-[16px] font-medium md:mt-0 mt-[60px]">
               (2) 성별
             </h3>
             <div className="flex gap-3 md:-mt-4">
@@ -58,7 +58,7 @@ export default function Home() {
             </div>
           </section>
           <button
-            className="md:w-[500px] w-[150px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[12px] md:text-[17px] md:py-3 py-1 shadow-md md:mt-0 mt-1"
+            className="md:w-[500px] w-[150px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-3 py-1 shadow-md md:mt-0 mt-1"
             onClick={handleNextClick}
           >
             다음
