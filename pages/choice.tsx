@@ -59,7 +59,7 @@ function ChoicePage() {
       </div>
 
       {currImgIdx <= 28 ? (
-        <section className="bg-white md:py-[60px] rounded-2xl md:mt-[70px] mt-[30px] md:relative md:h-[765px] h-fit">
+        <section className="bg-white md:py-[60px] rounded-2xl md:mt-[70px] md:relative md:h-[765px] h-fit">
           <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#e5e5e5] md:rounded-full relative"></div>
             <div
@@ -68,7 +68,7 @@ function ChoicePage() {
             ></div>
           </div>
           <div
-            className="flex flex-col md:gap-[17px] gap-[5px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
+            className="flex flex-col md:gap-[17px] gap-[30px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
@@ -80,11 +80,11 @@ function ChoicePage() {
                 </span>{" "}
                 해당 구역의 안전성을 평가해주세요
               </h3>
-              <h3 className="md:hidden block text-[17px] font-bold">
+              <h3 className="md:hidden block text-[20px] font-bold pt-2">
                 {!selectState ? "1. 교통" : "2. 범죄"}
               </h3>
 
-              <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[14px] w-[170px] md:w-full">
+              <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[16px] w-[330px] md:w-full">
                 {!selectState
                   ? '"이 곳에서 길을 걷거나 운전을 한다면 안전할까요?"'
                   : '"이 곳이 범죄로부터 얼마나 안전해 보이나요?"'}
@@ -94,39 +94,39 @@ function ChoicePage() {
             <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[50px] left-[11px] w-[27px] h-[27px] rounded-full shadow-md flex items-center justify-center text-[12px] text-[#FFFFFF] bg-[#0091ff]">
+            <div className="lg:hidden block absolute top-[70px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[18px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-[600px] w-[190px] items-center">
+            <div className="flex relative flex-col md:w-[600px] w-[300px] items-center mt-1 md:mt-0">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
-                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[180px] h-fit md:w-[350px] md:h-[350px]"
+                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[300px] h-[300px] md:w-[350px] md:h-[350px]"
                   alt="img"
                   width={350}
                   height={350}
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="md:w-[500px] w-[200px] md:mt-4 mt-3.5">
+              <section className="md:w-[500px] w-[310px] mt-4 ">
                 <div className="flex justify-between ">
-                  <h2 className="md:text-[18px] text-[14px] font-bold text-[#501919]">
+                  <h2 className="md:text-[18px] text-[16px] font-bold text-[#501919]">
                     위험해요
                   </h2>
-                  <h2 className="md:text-[18px] text-[14px] font-bold text-[#252065]">
+                  <h2 className="md:text-[18px] text-[16px] font-bold text-[#252065]">
                     안전해요
                   </h2>
                 </div>
-                <div className="flex justify-between md:h-[90px] h-[40px] items-center">
+                <div className="flex justify-between md:h-[90px] h-[60px] items-center">
                   {btnList.map((el, idx) => (
                     <button
                       key={idx}
                       style={{ backgroundColor: "#" + el[1] }}
-                      className={`rounded-full md:text-[40px] text-[15px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[25px] h-[25px] hover:shadow-xl md:hover:text-[50px] hover:text-[16px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[33px] hover:w-[33px] ${
+                      className={`rounded-full md:text-[40px] text-[30px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[50px] hover:text-[38px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[56px] hover:w-[56px] ${
                         isImgRendered && "ease-in-out duration-150"
                       } ${
                         tempRoundResult[selectState] === idx
-                          ? "md:h-[77px] md:w-[77px] h-[33px] w-[33px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[20px] hover:text-[20px] md:text-[50px] md:hover:text-[50px]"
+                          ? "md:h-[77px] md:w-[77px] w-[56px] h-[56px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[38px] hover:text-[35px] md:text-[50px] md:hover:text-[50px]"
                           : ""
                       }`}
                       onClick={() =>
@@ -143,7 +143,7 @@ function ChoicePage() {
             </div>
 
             <button
-              className="md:w-[800px] w-[150px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-3 py-1 shadow-md md:mt-0 mt-1"
+              className="md:w-[800px] w-[300px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-3 py-1.5 shadow-md md:mt-0 mt-1"
               onClick={handleClick}
             >
               {!selectState ? "다음" : "다음 라운드로 이동하기"}
@@ -158,7 +158,7 @@ function ChoicePage() {
         </div>
       )}
 
-      {/* {currRound <= 29 && !isImgRendered && (
+      {currRound <= 29 && !isImgRendered && (
         <>
           <div className="z-[100px] absolute top-[500px] hidden md:block">
             <MutatingDots
@@ -169,7 +169,7 @@ function ChoicePage() {
               radius="16"
             />
           </div>
-          <div className="z-[100px] absolute top-[300px] md:hidden">
+          {/* <div className="z-[100px] absolute top-[300px] md:hidden">
             <MutatingDots
               color="#0091ff"
               secondaryColor="#60bfff"
@@ -177,9 +177,9 @@ function ChoicePage() {
               width={90}
               radius="13"
             />
-          </div>
+          </div> */}
         </>
-      )} */}
+      )}
     </main>
   );
 }
