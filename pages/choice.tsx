@@ -72,7 +72,7 @@ function ChoicePage() {
             ></div>
           </div>
           <div
-            className="flex flex-col gap-[17px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
+            className="flex flex-col gap-[15px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
@@ -98,7 +98,7 @@ function ChoicePage() {
             <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[65px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
+            <div className="lg:hidden block absolute top-[65px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
             <div className="flex relative flex-col md:w-[600px] w-[300px] items-center ">
@@ -112,7 +112,7 @@ function ChoicePage() {
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="md:w-[500px] w-[310px] md:mt-4  mt-3">
+              <section className="md:w-[500px] w-[310px] md:mt-4  mt-2.5">
                 <div className="flex justify-between ">
                   <h2 className="md:text-[18px] text-[16px] font-bold text-[#501919]">
                     위험해요
