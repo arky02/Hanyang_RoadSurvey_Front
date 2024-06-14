@@ -22,6 +22,10 @@ function ChoicePage() {
     ["😇", "3010ff"],
   ];
   function handleClick() {
+    if (tempRoundResult[selectState] === undefined) {
+      alert("답변을 선택 해 주세요.");
+      return;
+    }
     console.log(
       `Round ${currRound} - Img Num: ` + String(randImgNumList[currImgIdx])
     );
