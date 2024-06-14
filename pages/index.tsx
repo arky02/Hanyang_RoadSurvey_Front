@@ -25,9 +25,9 @@ export default function Home() {
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
         성동구 보행 환경 인식에 대한 설문
       </div>
-      <section className="mt-[70px] bg-white rounded-2xl w-[750px] md:shadow-md h-[800px] py-[10px] flex items-center justify-center md:mt-[70px] ">
+      <section className=" bg-white rounded-2xl w-[750px] md:shadow-md md:h-[800px] py-[10px] flex items-center justify-center md:mt-[70px] ">
         <div className="flex flex-col md:gap-[60px] gap-[30px] w-fit items-center md:items-start">
-          <h3 className="md:text-[20px] text-[16px] text-[#2f2f2f] md:w-fit font-bold  ">
+          <h3 className="md:text-[20px] text-[17px] text-[#2f2f2f] md:w-fit font-bold  ">
             1. 설문자의 연령대과 성별을 선택해주세요
           </h3>
           <section className="rounded-2xl bg-white flex flex-col justify-evenly md:px-10 md:w-[500px]  md:h-[400px] bg-[#0091ff20] shadow-md md:gap-[10px] gap-[5px] px-[20px] py-[35px] mx-[10px]">

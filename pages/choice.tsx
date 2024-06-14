@@ -68,7 +68,7 @@ function ChoicePage() {
             ></div>
           </div>
           <div
-            className="flex flex-col md:gap-[17px] gap-[30px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
+            className="flex flex-col gap-[17px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
@@ -94,10 +94,10 @@ function ChoicePage() {
             <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[70px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[18px] text-[#FFFFFF] bg-[#0091ff] font-bold">
+            <div className="lg:hidden block absolute top-[63px] left-[25px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[18px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-[600px] w-[300px] items-center mt-1 md:mt-0">
+            <div className="flex relative flex-col md:w-[600px] w-[300px] items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
@@ -108,7 +108,7 @@ function ChoicePage() {
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="md:w-[500px] w-[310px] mt-4 ">
+              <section className="md:w-[500px] w-[310px] md:mt-4  mt-3">
                 <div className="flex justify-between ">
                   <h2 className="md:text-[18px] text-[16px] font-bold text-[#501919]">
                     위험해요
@@ -117,7 +117,7 @@ function ChoicePage() {
                     안전해요
                   </h2>
                 </div>
-                <div className="flex justify-between md:h-[90px] h-[60px] items-center">
+                <div className="flex justify-between md:h-[90px] h-[55px] items-center">
                   {btnList.map((el, idx) => (
                     <button
                       key={idx}
