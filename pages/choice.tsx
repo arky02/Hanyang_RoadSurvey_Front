@@ -50,7 +50,7 @@ function ChoicePage() {
   useEffect(() => {
     let tempRandImgNumList: number[] = [];
     while (tempRandImgNumList.length < 30) {
-      const num = Math.floor(Math.random() * 48 + 2);
+      const num = Math.floor(Math.random() * 29 + 1);
       if (!tempRandImgNumList.includes(num)) tempRandImgNumList.push(num);
     }
     setRandImgNumList(tempRandImgNumList);
@@ -104,7 +104,7 @@ function ChoicePage() {
             <div className="flex relative flex-col md:w-[600px] w-[300px] items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
-                  src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
+                  src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/img${randImgNumList[currImgIdx]}.png`}
                   className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[300px] h-[300px] md:w-[350px] md:h-[350px]"
                   alt="img"
                   width={350}
