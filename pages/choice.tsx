@@ -50,7 +50,7 @@ function ChoicePage() {
   useEffect(() => {
     let tempRandImgNumList: number[] = [];
     while (tempRandImgNumList.length < 30) {
-      const num = Math.floor(Math.random() * 29 + 1);
+      const num = Math.floor(Math.random() * 38 + 1);
       if (!tempRandImgNumList.includes(num)) tempRandImgNumList.push(num);
     }
     setRandImgNumList(tempRandImgNumList);
@@ -61,7 +61,6 @@ function ChoicePage() {
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
         성동구 보행 환경 인식에 대한 설문
       </div>
-
       {currImgIdx <= 29 ? (
         <section className="bg-white md:py-[60px] rounded-2xl mt-[73px] md:relative md:h-[765px] h-fit">
           <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
@@ -90,7 +89,7 @@ function ChoicePage() {
 
               <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[16px] w-[330px] md:w-full">
                 {!selectState
-                  ? '"이 곳에서 길을 걷거나 운전을 한다면 안전할까요?"'
+                  ? '"이 곳에서 길을 걷는다면 안전할까요?"'
                   : '"이 곳이 범죄로부터 얼마나 안전해 보이나요?"'}
               </h5>
             </div>
@@ -101,13 +100,13 @@ function ChoicePage() {
             <div className="lg:hidden block absolute top-[65px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-[600px] w-[300px] items-center ">
+            <div className="flex relative flex-col md:w-[600px] w-full px-[0.5px] items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/img${randImgNumList[currImgIdx]}.png`}
-                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[300px] h-[300px] md:w-[350px] md:h-[350px]"
+                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-[270px] md:w-fit md:h-[350px]"
                   alt="img"
-                  width={350}
+                  width={400}
                   height={350}
                   onLoad={() => setIsImgRendered(true)}
                 />
