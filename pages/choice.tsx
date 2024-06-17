@@ -57,7 +57,7 @@ function ChoicePage() {
   }, []);
 
   return (
-    <main className="flex justify-center items-center md:h-[100vh] md:bg-[#0091ff4d] ">
+    <main className="flex justify-center items-center md:h-[100vh] md:bg-[#0091ff4d] w-full">
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
         성동구 보행 환경 인식에 대한 설문
       </div>
@@ -71,7 +71,7 @@ function ChoicePage() {
             ></div>
           </div>
           <div
-            className="flex flex-col gap-[15px] items-center md:px-[20px] lg:px-[150px] px-[10px]"
+            className="flex flex-col gap-[35px] items-center md:px-[20px] lg:px-[150px] px-[2px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
@@ -100,18 +100,18 @@ function ChoicePage() {
             <div className="lg:hidden block absolute top-[65px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-[600px] w-full px-[0.5px] items-center ">
+            <div className="flex relative flex-col md:w-[600px] w-full items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/img${randImgNumList[currImgIdx]}.png`}
-                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-[270px] md:w-fit md:h-[350px]"
+                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-fit md:w-fit md:h-[350px]"
                   alt="img"
                   width={400}
                   height={350}
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="md:w-[500px] w-[310px] md:mt-4  mt-2.5">
+              <section className="md:w-[500px] w-[310px] md:mt-4  mt-3">
                 <div className="flex justify-between ">
                   <h2 className="md:text-[18px] text-[16px] font-bold text-[#501919]">
                     위험해요
