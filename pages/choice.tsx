@@ -7,7 +7,7 @@ function ChoicePage() {
   const [randImgNumList, setRandImgNumList] = useState<number[]>([]);
   const [isImgRendered, setIsImgRendered] = useState(false);
   const [selectState, setSelectState] = useState(0);
-  const [tempRoundResult, setTempRoundResult] = useState<number[]>([]);
+  const [tempRoundResult, setTempRoundResult] = useState<number[]>([]); // 라운드 별 결과 저장
   const [resultList, setResultList] = useState<string[]>([]);
 
   console.log(isImgRendered);
@@ -31,6 +31,7 @@ function ChoicePage() {
     );
 
     if (selectState >= 1) {
+      // 다음 라운드로 이동
       setTempRoundResult([]);
       setSelectState(0);
       setIsImgRendered(false);
@@ -100,11 +101,11 @@ function ChoicePage() {
             <div className="lg:hidden block absolute top-[65px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-[600px] w-full items-center ">
+            <div className="flex relative flex-col md:w-full w-full items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/img${randImgNumList[currImgIdx]}.png`}
-                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-fit md:w-fit md:h-[350px]"
+                  className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-fit md:w-fit md:h-[300px]"
                   alt="img"
                   width={400}
                   height={350}
@@ -135,7 +136,7 @@ function ChoicePage() {
                       onClick={() =>
                         !selectState
                           ? setTempRoundResult([idx])
-                          : setTempRoundResult((prev) => [...prev, idx])
+                          : setTempRoundResult((prev) => [prev[0], idx])
                       }
                     >
                       {el[0]}
