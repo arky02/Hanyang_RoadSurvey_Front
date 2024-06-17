@@ -51,7 +51,7 @@ function ChoicePage() {
   useEffect(() => {
     let tempRandImgNumList: number[] = [];
     while (tempRandImgNumList.length < 30) {
-      const num = Math.floor(Math.random() * 38 + 1);
+      const num = Math.floor(Math.random() * 596) + 1; // 1~596
       if (!tempRandImgNumList.includes(num)) tempRandImgNumList.push(num);
     }
     setRandImgNumList(tempRandImgNumList);
