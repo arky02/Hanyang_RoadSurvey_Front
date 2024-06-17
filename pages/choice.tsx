@@ -65,7 +65,7 @@ function ChoicePage() {
       {currImgIdx <= 29 ? (
         <section className="bg-white md:py-[60px] rounded-2xl mt-[73px] md:relative md:h-[765px] h-fit">
           <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
-            <div className="w-full h-full bg-[#e5e5e5] md:rounded-full relative"></div>
+            <div className="w-full h-full bg-[#ebebeb] md:rounded-full relative"></div>
             <div
               className="w-full h-full bg-[#0091ff] md:rounded-full absolute z-9 top-0 ease-in-out duration-300"
               style={{ width: `${(currRound / 30) * 100 - 1}%` }}
@@ -98,7 +98,7 @@ function ChoicePage() {
             <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[65px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
+            <div className="lg:hidden block absolute top-[65px] md:top-[55px] md:left-[45px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
             <div className="flex relative flex-col md:w-full w-full items-center ">
