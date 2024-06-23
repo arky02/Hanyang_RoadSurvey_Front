@@ -1,4 +1,6 @@
+import SendSQLQuery from "@/utils/sendsql";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MutatingDots } from "react-loader-spinner";
 
@@ -6,23 +8,24 @@ function ChoicePage() {
   const [currImgIdx, setCurrImgIdx] = useState<number>(0);
   const [randImgNumList, setRandImgNumList] = useState<number[]>([]);
   const [isImgRendered, setIsImgRendered] = useState(false);
-  const [selectState, setSelectState] = useState(0);
-  const [tempRoundResult, setTempRoundResult] = useState<number[]>([]); // 라운드 별 결과 저장
+  const [tempRoundResult, setTempRoundResult] = useState<number[]>([-1, -1]); // 라운드 별 결과 저장
   const [resultList, setResultList] = useState<string[]>([]);
+  const [userInfo, setUserInfo] = useState({ age: "", sex: "" });
 
-  console.log(isImgRendered);
-  console.log(resultList);
+  const params = useSearchParams();
+  const age = params.get("age");
+  const sex = params.get("sex");
+
+  useEffect(() => {
+    if (age && sex) {
+      setUserInfo({ age: age, sex: sex });
+    }
+  }, [age, sex]);
 
   let currRound = currImgIdx + 1;
-  const btnList = [
-    ["😡", "ff0000"],
-    ["☹️", "ff8409"],
-    ["😐", "ffeb0a"],
-    ["🙂", "00ff04"],
-    ["😇", "3010ff"],
-  ];
+  const btnList = ["ff0000", "ff8409", "ffeb0a", "36f339", "4d95fb"];
   function handleClick() {
-    if (tempRoundResult[selectState] === undefined) {
+    if ((tempRoundResult[0] || tempRoundResult[1]) === -1) {
       alert("답변을 선택 해 주세요.");
       return;
     }
@@ -30,22 +33,34 @@ function ChoicePage() {
       `Round ${currRound} - Img Num: ` + String(randImgNumList[currImgIdx])
     );
 
-    if (selectState >= 1) {
-      // 다음 라운드로 이동
-      setTempRoundResult([]);
-      setSelectState(0);
-      setIsImgRendered(false);
-      setCurrImgIdx((prev) => prev + 1);
+    userInfo &&
+      SendSQLQuery({
+        age: age!,
+        sex: sex!,
+        img_name: String(randImgNumList[currImgIdx]),
+        transport_score: tempRoundResult[0],
+        crime_score: tempRoundResult[0],
+      });
+    console.log("=== SQL Query 전송 ===");
+    console.log({
+      age: age!,
+      sex: sex!,
+      img_name: String(randImgNumList[currImgIdx]),
+      transport_score: tempRoundResult[0],
+      crime_score: tempRoundResult[0],
+    });
 
-      setResultList((prev) => [
-        ...prev,
-        `${randImgNumList[currImgIdx]}:${tempRoundResult[0]},${tempRoundResult[1]}`,
-      ]);
+    // resultList : 전체 결과 리스트
+    setResultList((prev) => [
+      ...prev,
+      `${randImgNumList[currImgIdx]}:${tempRoundResult[0]},${tempRoundResult[1]}`,
+    ]);
 
-      return;
-    }
+    setTempRoundResult([-1, -1]);
 
-    setSelectState((prev) => ++prev);
+    // 다음 라운드로 이동
+    setCurrImgIdx((prev) => prev + 1);
+    setIsImgRendered(false);
   }
 
   useEffect(() => {
@@ -63,8 +78,8 @@ function ChoicePage() {
         성동구 보행 환경 인식에 대한 설문
       </div>
       {currImgIdx <= 29 ? (
-        <section className="bg-white md:py-[60px] rounded-2xl mt-[73px] md:relative md:h-[765px] h-fit">
-          <div className="w-full md:h-[5px] h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
+        <section className="bg-white md:py-[55px] rounded-2xl mt-[73px] md:relative md:h-[745px] h-fit">
+          <div className="w-full  h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#ebebeb] md:rounded-full relative"></div>
             <div
               className="w-full h-full bg-[#0091ff] md:rounded-full absolute z-9 top-0 ease-in-out duration-300"
@@ -72,33 +87,19 @@ function ChoicePage() {
             ></div>
           </div>
           <div
-            className="flex flex-col gap-[35px] items-center md:px-[20px] lg:px-[150px] px-[2px]"
+            className="flex flex-col gap-[23px] items-center md:px-[20px] lg:px-[150px] px-[2px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
-              <h3 className="md:text-[25px] font-medium hidden md:block">
-                <span className="font-bold ">
-                  {!selectState
-                    ? '1. "교통"의 측면에서'
-                    : '2. "범죄"의 측면에서'}
-                </span>{" "}
-                해당 구역의 안전성을 평가해주세요
+              <h3 className="md:text-[25px] font-medium  md:block">
+                교통/범죄 안전점수를 평가해주세요
               </h3>
-              <h3 className="md:hidden block text-[20px] font-bold pt-2">
-                {!selectState ? "1. 교통" : "2. 범죄"}
-              </h3>
-
-              <h5 className="text-[#434343] md:mt-8 mt-2 md:text-[20px] text-[16px] w-[330px] md:w-full">
-                {!selectState
-                  ? '"이 곳에서 길을 걷는다면 안전할까요?"'
-                  : '"이 곳이 범죄로부터 얼마나 안전해 보이나요?"'}
-              </h5>
             </div>
 
-            <div className="hidden lg:flex absolute top-[53px] left-[55px] w-[120px] h-[50px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
+            <div className="hidden lg:flex absolute top-[50px] left-[55px] w-[120px] h-[48px] rounded-full shadow-md flex items-center justify-center font-bold text-[20px] text-[#FFFFFF] bg-[#0091ff]">
               Round {currImgIdx + 1}
             </div>
-            <div className="lg:hidden block absolute top-[65px] md:top-[55px] md:left-[45px] left-[20px] w-[45px] h-[45px] rounded-full shadow-md flex items-center justify-center text-[16px] text-[#FFFFFF] bg-[#0091ff] font-bold">
+            <div className="lg:hidden block absolute top-[63px] md:top-[55px] md:left-[45px] left-[20px] w-[40px] h-[40px] rounded-full shadow-md flex items-center justify-center text-[15px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
             <div className="flex relative flex-col md:w-full w-full items-center ">
@@ -112,36 +113,60 @@ function ChoicePage() {
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="md:w-[500px] w-[310px] md:mt-4  mt-3">
-                <div className="flex justify-between ">
-                  <h2 className="md:text-[18px] text-[16px] font-bold text-[#501919]">
-                    위험해요
-                  </h2>
-                  <h2 className="md:text-[18px] text-[16px] font-bold text-[#252065]">
-                    안전해요
-                  </h2>
+              <section className="flex flex-col md:w-[500px] w-[310px] md:mt-4  mt-3 gap-[12px]">
+                <div className="flex flex-col">
+                  <div className="text-[16px] md:text-[18px]">
+                    <span className="font-bold text-[17px] md:text-[20px]  mr-[7px]">
+                      교통점수
+                    </span>
+                    이 곳을 걷는다면 얼마나 안전할까?
+                  </div>
+                  <div className="flex justify-between md:h-[70px] h-[55px] items-center">
+                    {btnList.map((el, idx) => (
+                      <button
+                        key={idx}
+                        style={{ backgroundColor: "#" + el }}
+                        className={`rounded-full shadow md:text-[25px] text-[20px] hover:text-[20px] md:w-[48px] md:h-[48px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[35px] hover:text-[25px] md:hover:h-[58px] md:hover:w-[58px] hover:h-[48px] hover:w-[48px] ${
+                          isImgRendered && "ease-in-out duration-150"
+                        } ${
+                          tempRoundResult[0] === idx
+                            ? "md:h-[59px] md:w-[59px] w-[48px] h-[48px] md:border-[1px] border-[1px] border-[#2f2f2f] text-[20px] hover:text-[25px] md:text-[35px] md:hover:text-[35px]"
+                            : ""
+                        }`}
+                        onClick={() => setTempRoundResult(() => [idx])}
+                      >
+                        {idx + 1}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex justify-between md:h-[90px] h-[55px] items-center">
-                  {btnList.map((el, idx) => (
-                    <button
-                      key={idx}
-                      style={{ backgroundColor: "#" + el[1] }}
-                      className={`rounded-full md:text-[40px] text-[29px] hover:text-[20px] md:w-[62px] md:h-[62px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[50px] hover:text-[38px] md:hover:h-[77px] md:hover:w-[77px] hover:h-[56px] hover:w-[56px] ${
-                        isImgRendered && "ease-in-out duration-150"
-                      } ${
-                        tempRoundResult[selectState] === idx
-                          ? "md:h-[77px] md:w-[77px] w-[56px] h-[56px] md:border-[3px] border-[1px] border-[#2f2f2f] text-[38.5px] hover:text-[35px] md:text-[50px] md:hover:text-[50px]"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        !selectState
-                          ? setTempRoundResult([idx])
-                          : setTempRoundResult((prev) => [prev[0], idx])
-                      }
-                    >
-                      {el[0]}
-                    </button>
-                  ))}
+                <div className="flex flex-col">
+                  <div className="text-[16px] md:text-[18px]">
+                    <span className="font-bold text-[17px] md:text-[20px] mr-[7px]">
+                      교통점수
+                    </span>
+                    이 곳을 걷는다면 얼마나 안전할까?
+                  </div>
+                  <div className="flex justify-between md:h-[70px] h-[55px] items-center">
+                    {btnList.map((el, idx) => (
+                      <button
+                        key={idx}
+                        style={{ backgroundColor: "#" + el }}
+                        className={`rounded-full md:text-[25px] text-[20px] hover:text-[20px] md:w-[48px] md:h-[48px] w-[43px] h-[43px] shadow hover:shadow-xl md:hover:text-[35px] hover:text-[25px] md:hover:h-[58px] md:hover:w-[58px] hover:h-[48px] hover:w-[48px] ${
+                          isImgRendered && "ease-in-out duration-150"
+                        } ${
+                          tempRoundResult[1] === idx
+                            ? "md:h-[59px] md:w-[59px] w-[48px] h-[48px] md:border-[1px] border-[1px] border-[#2f2f2f] text-[25px] hover:text-[25px] md:text-[35px] md:hover:text-[35px]"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          setTempRoundResult((prev) => [prev[0], idx])
+                        }
+                      >
+                        {idx + 1}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </section>
             </div>
@@ -150,12 +175,12 @@ function ChoicePage() {
               className="md:w-[800px] w-[300px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-3 py-1.5 shadow-md md:mt-0 mt-1"
               onClick={handleClick}
             >
-              {!selectState ? "다음" : "다음 라운드로 이동하기"}
+              {"다음"}
             </button>
           </div>
         </section>
       ) : (
-        <div className="font-bold md:text-[40px] text-[20px] text-center h-[100vh] flex items-center">
+        <div className="font-bold md:text-[25px] text-[20px] text-center h-[100vh] flex items-center">
           {" "}
           설문이 종료되었습니다.
           <br /> 감사합니다.

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import SmallBtn from "@/components/SmallBtn";
+import axios from "axios";
 
 export default function Home() {
   const [age, setAge] = useState<number | null>();
@@ -17,7 +18,7 @@ export default function Home() {
       return;
     }
 
-    router.push("/choice");
+    router.push(`/choice?age=${age}&sex=${sex}`);
   }
 
   return (
@@ -25,8 +26,8 @@ export default function Home() {
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
         성동구 보행 환경 인식에 대한 설문
       </div>
-      <section className=" bg-white rounded-2xl w-[750px] md:shadow-md md:h-[800px] py-[10px] flex items-center justify-center md:mt-[70px] ">
-        <div className="flex flex-col md:gap-[60px] gap-[30px] w-fit items-center md:items-start">
+      <section className=" bg-white rounded-2xl w-[700px] md:shadow-md md:h-[730px] py-[10px] flex items-center justify-center md:mt-[70px] ">
+        <div className="flex flex-col md:gap-[50px] gap-[30px] w-fit items-center md:items-start">
           <h3 className="md:text-[20px] text-[17px] text-[#2f2f2f] md:w-fit font-bold  ">
             1. 설문자의 연령대과 성별을 선택해주세요
           </h3>
