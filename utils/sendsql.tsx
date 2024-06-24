@@ -8,7 +8,7 @@ interface SqlProps {
   crime_score: number;
 }
 
-const SendSQLQuery = async ({
+export const SendSQLQuery = async ({
   age,
   sex,
   img_name,
@@ -17,7 +17,7 @@ const SendSQLQuery = async ({
 }: SqlProps) => {
   let response = "";
   try {
-    response = await axios.post(`https://roadvs.shop/api/results/save`, {
+    response = await axios.post(`https://roadvs.shop/api/result/save`, {
       age: age,
       sex: sex,
       img_name: img_name,
@@ -31,4 +31,13 @@ const SendSQLQuery = async ({
   return response;
 };
 
-export default SendSQLQuery;
+export const getResults = async () => {
+  let response = "";
+  try {
+    response = await axios.get(`https://roadvs.shop/api/results`);
+  } catch {
+    alert("서버 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.");
+    return;
+  }
+  return response;
+};
