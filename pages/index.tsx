@@ -22,7 +22,10 @@ export default function Home() {
   }
 
   return (
-    <main className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d]">
+    <div className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d]">
+      <button className="absolute top-[18px] border-[1px] border-[#202020] w-fit z-10 rounded-md px-[10px] py-[5px] right-[20px]  shadow-md text-[#171717]" onClick={()=>router.push('/result')}>
+        관리자 페이지
+      </button>
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
         성동구 보행 환경 인식에 대한 설문
       </div>
@@ -66,6 +69,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

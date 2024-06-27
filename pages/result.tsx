@@ -8,6 +8,18 @@ const headers = ["나이대", "성별", "이미지 이름", "교통점수", "범
 
 export default function Result() {
   const [res, setRes] = useState();
+  const [pwd, setPwd] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    if (pwd !== process.env.NEXT_PUBLIC_ADMIN_PWD) {
+      alert("비밀번호가 맞지 않습니다!");
+      return;
+    }
+    console.log("admin login succeed!");
+    alert("admin 페이지 로그인에 성공하였습니다!");
+    setIsAuthenticated(true);
+  };
 
   const convertToExcel = () => {
     const excelData = [
@@ -45,10 +57,10 @@ export default function Result() {
         console.log(error);
       }
     };
-    fetchData();
-  }, []);
+    if (isAuthenticated) fetchData();
+  }, [isAuthenticated]);
 
-  return (
+  return isAuthenticated ? (
     <main className="w-[100vw] flex justify-center">
       <div className="p-[100px] w-fit flex flex-col items-end">
         <h1 className="text-center w-full font-bold text-[40px] mb-[40px]">
@@ -79,6 +91,24 @@ export default function Result() {
         </div>
       </div>
     </main>
+  ) : (
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+      <div className="w-[500px] h-[300px] bg-[#f1f1f1] rounded-xl flex flex-col justify-center items-center shadow-lg gap-[15px]">
+        <h2 className=" text-[18px]">관리자 비밀번호를 입력해주세요</h2>
+        <input
+          className="rounded-full py-[8px] w-[200px] px-[15px]"
+          placeholder="비밀번호 입력 "
+          value={pwd}
+          onChange={(e) => setPwd(e.target.value)}
+        ></input>
+        <button
+          className="bg-[#0091ff] rounded-full py-[5px] text-[#ffffff] w-[190px] mt-[20px]"
+          onClick={handleLogin}
+        >
+          Enter
+        </button>
+      </div>
+    </div>
   );
 }
 
