@@ -24,6 +24,7 @@ export default function Result() {
   const convertToExcel = () => {
     const excelData = [
       headers,
+      //@ts-ignore
       ...res?.map((el) => [
         el.age,
         el.sex,
@@ -51,6 +52,7 @@ export default function Result() {
     const fetchData = async () => {
       try {
         const result = await getResults();
+        //@ts-ignore
         setRes(result?.data);
         console.log(res);
       } catch (error) {
@@ -83,11 +85,15 @@ export default function Result() {
             crime_score: "범죄점수",
             isHeader: true,
           })}
-          {res?.map((el) => (
-            <div key={el._id} className="flex">
-              {makeTableRow(el)}
-            </div>
-          ))}
+
+          {
+            //@ts-ignore
+            res?.map((el) => (
+              <div key={el._id} className="flex">
+                {makeTableRow(el)}
+              </div>
+            ))
+          }
         </div>
       </div>
     </main>
