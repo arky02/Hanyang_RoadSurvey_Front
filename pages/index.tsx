@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex justify-center items-center h-[100vh] md:bg-[#0091ff4d]">
       <button
-        className="absolute md:top-[18px] md:text-[16px] text-[12px] top-[9px] border-[1px] border-[#202020] w-fit z-10 rounded-md md:px-[10px] md:py-[5px] p-[5px] md:right-[20px] right-[12px] shadow-md text-[#171717]"
+        className="absolute md:top-[18px] md:text-[16px] text-[12px] top-[10px] md:border-[1px] md:border-[#202020] w-fit z-10 rounded-md md:px-[10px] md:py-[5px] p-[5px] md:right-[20px] right-[7px] md:shadow-md md:text-[#171717] text-[#242e74] underline md:no-underline"
         onClick={() => router.push("/result")}
       >
         Admin
