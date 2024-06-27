@@ -39,7 +39,7 @@ function ChoicePage() {
         sex: sex!,
         img_name: String(randImgNumList[currImgIdx]),
         transport_score: tempRoundResult[0],
-        crime_score: tempRoundResult[0],
+        crime_score: tempRoundResult[1],
       });
     console.log("=== SQL Query 전송 ===");
     console.log({
@@ -47,7 +47,7 @@ function ChoicePage() {
       sex: sex!,
       img_name: String(randImgNumList[currImgIdx]),
       transport_score: tempRoundResult[0],
-      crime_score: tempRoundResult[0],
+      crime_score: tempRoundResult[1],
     });
 
     // resultList : 전체 결과 리스트
@@ -65,7 +65,7 @@ function ChoicePage() {
 
   useEffect(() => {
     let tempRandImgNumList: number[] = [];
-    while (tempRandImgNumList.length < 30) {
+    while (tempRandImgNumList.length < 20) {
       const num = Math.floor(Math.random() * 596) + 1; // 1~596
       if (!tempRandImgNumList.includes(num)) tempRandImgNumList.push(num);
     }
@@ -77,17 +77,17 @@ function ChoicePage() {
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
         성동구 보행 환경 인식에 대한 설문
       </div>
-      {currImgIdx <= 29 ? (
-        <section className="bg-white md:py-[55px] rounded-2xl mt-[73px] md:relative md:h-[745px] h-fit">
+      {currImgIdx <= 19 ? (
+        <section className="bg-white md:py-[55px] rounded-2xl mt-[73px] md:relative md:h-[780px] h-fit">
           <div className="w-full  h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#ebebeb] md:rounded-full relative"></div>
             <div
               className="w-full h-full bg-[#0091ff] md:rounded-full absolute z-9 top-0 ease-in-out duration-300"
-              style={{ width: `${(currRound / 30) * 100 - 1}%` }}
+              style={{ width: `${(currRound / 21) * 100 - 1}%` }}
             ></div>
           </div>
           <div
-            className="flex flex-col gap-[23px] items-center md:px-[20px] lg:px-[150px] px-[2px]"
+            className="flex flex-col gap-[21px] items-center md:px-[20px] lg:px-[150px] px-[2px]"
             style={!isImgRendered ? { visibility: "hidden" } : {}}
           >
             <div className="flex items-center flex-col text-center">
@@ -113,7 +113,7 @@ function ChoicePage() {
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="flex flex-col md:w-[500px] w-[310px] md:mt-4  mt-3 gap-[12px]">
+              <section className="flex flex-col md:w-[500px] w-[310px] md:mt-4  mt-3 gap-[15px]">
                 <div className="flex flex-col">
                   <div className="text-[16px] md:text-[18px]">
                     <span className="font-bold text-[17px] md:text-[20px]  mr-[7px]">
@@ -121,33 +121,7 @@ function ChoicePage() {
                     </span>
                     이 곳을 걷는다면 얼마나 안전할까?
                   </div>
-                  <div className="flex justify-between md:h-[70px] h-[55px] items-center">
-                    {btnList.map((el, idx) => (
-                      <button
-                        key={idx}
-                        style={{ backgroundColor: "#" + el }}
-                        className={`rounded-full shadow md:text-[25px] text-[20px] hover:text-[20px] md:w-[48px] md:h-[48px] w-[43px] h-[43px] hover:shadow-xl md:hover:text-[35px] hover:text-[25px] md:hover:h-[58px] md:hover:w-[58px] hover:h-[48px] hover:w-[48px] ${
-                          isImgRendered && "ease-in-out duration-150"
-                        } ${
-                          tempRoundResult[0] === idx
-                            ? "md:h-[59px] md:w-[59px] w-[48px] h-[48px] md:border-[1px] border-[1px] border-[#2f2f2f] text-[20px] hover:text-[25px] md:text-[35px] md:hover:text-[35px]"
-                            : ""
-                        }`}
-                        onClick={() => setTempRoundResult(() => [idx])}
-                      >
-                        {idx + 1}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <div className="text-[16px] md:text-[18px]">
-                    <span className="font-bold text-[17px] md:text-[20px] mr-[7px]">
-                      교통점수
-                    </span>
-                    이 곳을 걷는다면 얼마나 안전할까?
-                  </div>
-                  <div className="flex justify-between md:h-[70px] h-[55px] items-center">
+                  <div className="flex justify-between md:h-[65px] h-[55px] items-center md:mt-[3px]">
                     {btnList.map((el, idx) => (
                       <button
                         key={idx}
@@ -155,17 +129,59 @@ function ChoicePage() {
                         className={`rounded-full md:text-[25px] text-[20px] hover:text-[20px] md:w-[48px] md:h-[48px] w-[43px] h-[43px] shadow hover:shadow-xl md:hover:text-[35px] hover:text-[25px] md:hover:h-[58px] md:hover:w-[58px] hover:h-[48px] hover:w-[48px] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
-                          tempRoundResult[1] === idx
+                          tempRoundResult[0] === idx + 1
+                            ? "md:h-[59px] md:w-[59px] w-[48px] h-[48px] md:border-[1px] border-[1px] border-[#2f2f2f] text-[25px] hover:text-[25px] md:text-[35px] md:hover:text-[35px]"
+                            : ""
+                        }`}
+                        onClick={() => setTempRoundResult(() => [idx + 1])}
+                      >
+                        {idx + 1}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="flex w-full justify-between px-[8px]">
+                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[14px]">
+                      위험
+                    </h5>
+                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[14px]">
+                      안전
+                    </h5>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-[16px] md:text-[18px]">
+                    <span className="font-bold text-[17px] md:text-[20px] mr-[7px]">
+                      범죄점수
+                    </span>
+                    이 곳은 범죄로부터 얼마나 안전할까?
+                  </div>
+                  <div className="flex justify-between md:h-[65px] h-[55px] items-center md:mt-[3px]">
+                    {btnList.map((el, idx) => (
+                      <button
+                        key={idx}
+                        style={{ backgroundColor: "#" + el }}
+                        className={`rounded-full md:text-[25px] text-[20px] hover:text-[20px] md:w-[48px] md:h-[48px] w-[43px] h-[43px] shadow hover:shadow-xl md:hover:text-[35px] hover:text-[25px] md:hover:h-[58px] md:hover:w-[58px] hover:h-[48px] hover:w-[48px] ${
+                          isImgRendered && "ease-in-out duration-150"
+                        } ${
+                          tempRoundResult[1] === idx + 1
                             ? "md:h-[59px] md:w-[59px] w-[48px] h-[48px] md:border-[1px] border-[1px] border-[#2f2f2f] text-[25px] hover:text-[25px] md:text-[35px] md:hover:text-[35px]"
                             : ""
                         }`}
                         onClick={() =>
-                          setTempRoundResult((prev) => [prev[0], idx])
+                          setTempRoundResult((prev) => [prev[0], idx + 1])
                         }
                       >
                         {idx + 1}
                       </button>
                     ))}
+                  </div>
+                  <div className="flex w-full justify-between px-[8px]">
+                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[14px]">
+                      위험
+                    </h5>
+                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[14px]">
+                      안전
+                    </h5>
                   </div>
                 </div>
               </section>
@@ -187,7 +203,7 @@ function ChoicePage() {
         </div>
       )}
 
-      {currRound <= 29 && !isImgRendered && (
+      {currRound <= 19 && !isImgRendered && (
         <>
           <div className="z-[100px] absolute top-[500px] hidden md:block">
             <MutatingDots
