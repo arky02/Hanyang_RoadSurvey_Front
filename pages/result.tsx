@@ -12,7 +12,7 @@ export default function Result() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = () => {
-    if (pwd === process.env.NEXT_PUBLIC_ADMIN_PWD) {
+    if (pwd !== process.env.NEXT_PUBLIC_ADMIN_PWD) {
       alert("비밀번호가 맞지 않습니다!");
       return;
     }
