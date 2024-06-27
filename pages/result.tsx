@@ -12,7 +12,7 @@ export default function Result() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = () => {
-    if (pwd !== process.env.NEXT_PUBLIC_ADMIN_PWD) {
+    if (pwd === process.env.NEXT_PUBLIC_ADMIN_PWD) {
       alert("비밀번호가 맞지 않습니다!");
       return;
     }
@@ -138,40 +138,40 @@ const makeTableRow = ({
   isHeader?: boolean;
 }) => (
   <div key={_id} className={`flex ${isHeader && "bg-[#5bcff9]"}`}>
-    <div className="md:w-[50px] w-[40px] border-[1px] border-[#000000] text-center font-bold">
+    <div className="md:w-[60px] w-[30px] border-[1px] border-[#000000] text-center font-bold text-[11px] md:text-[16px]">
       {_id}
     </div>
     <div
-      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
-        isHeader && "font-bold text-[18px]"
+      className={`md:w-[100px] w-[45px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
       }`}
     >
       {age}
     </div>
     <div
-      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
-        isHeader && "font-bold text-[18px]"
+      className={`md:w-[100px] w-[45px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
       }`}
     >
       {sex}
     </div>
     <div
-      className={`w-[300px] border-[1px] border-[#000000] text-center ${
-        isHeader && "font-bold text-[18px]"
+      className={`md:w-[300px] w-[200px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
       }`}
     >
       {img_name}
     </div>
     <div
-      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
-        isHeader && "font-bold text-[18px]"
+      className={`md:w-[100px] w-[45px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
       }`}
     >
       {transport_score}
     </div>
     <div
-      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
-        isHeader && "font-bold text-[18px]"
+      className={`md:w-[100px] w-[45px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
       }`}
     >
       {crime_score}
