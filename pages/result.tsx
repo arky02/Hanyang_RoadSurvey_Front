@@ -12,7 +12,7 @@ export default function Result() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = () => {
-    if (pwd !== process.env.NEXT_PUBLIC_ADMIN_PWD) {
+    if (pwd === process.env.NEXT_PUBLIC_ADMIN_PWD) {
       alert("비밀번호가 맞지 않습니다!");
       return;
     }
@@ -63,13 +63,13 @@ export default function Result() {
   }, [isAuthenticated]);
 
   return isAuthenticated ? (
-    <main className="w-[100vw] flex justify-center">
+    <main className="w-[100vw] flex justify-center md:overflow-y-scroll overflow-scroll">
       <div className="p-[100px] w-fit flex flex-col items-end">
-        <h1 className="text-center w-full font-bold text-[40px] mb-[40px]">
+        <h1 className="text-center w-full font-bold md:text-[40px] text-[25px] mb-[40px]">
           설문조사 결과 조회
         </h1>
         <button
-          className="font-bold text-[20px] border-[3px] border-[#26b94a] flex items-center rounded px-[10px] py-[5px] gap-[5px] shadow-lg bg-[#14cd422a] mb-[50px]"
+          className="md:flex  hidden font-bold text-[20px] border-[3px] border-[#26b94a]  items-center rounded px-[10px] py-[5px] gap-[5px] shadow-lg bg-[#14cd422a] mb-[50px]"
           onClick={convertToExcel}
         >
           <Image src={ExcelImg} width={35} height={35} alt="excel img"></Image>
@@ -99,8 +99,10 @@ export default function Result() {
     </main>
   ) : (
     <div className="w-[100vw] h-[100vh] flex justify-center items-center">
-      <div className="w-[500px] h-[300px] bg-[#f1f1f1] rounded-xl flex flex-col justify-center items-center shadow-lg gap-[15px]">
-        <h2 className=" text-[18px]">관리자 비밀번호를 입력해주세요</h2>
+      <div className="md:w-[500px] md:h-[300px] w-[300px] h-[200px] bg-[#f1f1f1] rounded-xl flex flex-col justify-center items-center shadow-lg md:gap-[15px] gap-[10px]">
+        <h2 className="text-[16px] md:text-[18px]">
+          관리자 비밀번호를 입력해주세요
+        </h2>
         <input
           className="rounded-full py-[8px] w-[200px] px-[15px]"
           placeholder="비밀번호 입력 "
@@ -136,18 +138,18 @@ const makeTableRow = ({
   isHeader?: boolean;
 }) => (
   <div key={_id} className={`flex ${isHeader && "bg-[#5bcff9]"}`}>
-    <div className="w-[50px] border-[1px] border-[#000000] text-center font-bold">
+    <div className="md:w-[50px] w-[40px] border-[1px] border-[#000000] text-center font-bold">
       {_id}
     </div>
     <div
-      className={`w-[100px] border-[1px] border-[#000000] text-center ${
+      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
         isHeader && "font-bold text-[18px]"
       }`}
     >
       {age}
     </div>
     <div
-      className={`w-[100px] border-[1px] border-[#000000] text-center ${
+      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
         isHeader && "font-bold text-[18px]"
       }`}
     >
@@ -161,14 +163,14 @@ const makeTableRow = ({
       {img_name}
     </div>
     <div
-      className={`w-[100px] border-[1px] border-[#000000] text-center ${
+      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
         isHeader && "font-bold text-[18px]"
       }`}
     >
       {transport_score}
     </div>
     <div
-      className={`w-[100px] border-[1px] border-[#000000] text-center ${
+      className={`md:w-[100px] w-[70px] border-[1px] border-[#000000] text-center ${
         isHeader && "font-bold text-[18px]"
       }`}
     >
