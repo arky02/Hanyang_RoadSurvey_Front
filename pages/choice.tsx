@@ -118,7 +118,7 @@ function ChoicePage() {
               <section className="flex flex-col md:w-[500px] w-[310px] md:mt-5  mt-3 gap-[10px]">
                 <div className="flex flex-col">
                   <div className="text-[16px] md:text-[18px]">
-                    <span className="font-bold text-[17px] md:text-[20px] mr-[7px]">
+                    <span className="font-bold text-[15px] md:text-[20px] mr-[7px]">
                       교통점수
                     </span>
                     이 곳을 걷는다면 얼마나 안전할까?
@@ -127,32 +127,40 @@ function ChoicePage() {
                     {btnList.map((el, idx) => (
                       <button
                         key={idx}
-                        style={{ backgroundColor: "#" + el }}
-                        className={`rounded-full md:text-[22px] text-[20px] hover:text-[20px] md:w-[43px] md:h-[43px] w-[43px] h-[43px] shadow hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] ${
+                        style={{
+                          borderColor: "#" + el,
+                          backgroundColor:
+                            tempRoundResult[0] === idx + 1 ? "#" + el : "white",
+                        }}
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[0] === idx + 1
-                            ? "md:h-[52px] md:w-[52px] w-[43px] h-[43px] md:border-[1px] border-[1px] border-[#656565] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]"
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]`
                             : ""
                         }`}
-                        onClick={() => setTempRoundResult(() => [idx + 1])}
+                        onClick={() =>
+                          setTempRoundResult((prev) =>
+                            prev[1] ? [idx + 1, prev[1]] : [idx + 1]
+                          )
+                        }
                       >
                         {idx + 1}
                       </button>
                     ))}
                   </div>
                   <div className="flex w-full justify-between px-[8px]">
-                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[14px]">
+                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[12px]">
                       위험
                     </h5>
-                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[14px]">
+                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[12px]">
                       안전
                     </h5>
                   </div>
                 </div>
                 <div className="flex flex-col">
                   <div className="text-[16px] md:text-[18px]">
-                    <span className="font-bold text-[17px] md:text-[20px] mr-[7px]">
+                    <span className="font-bold text-[15px] md:text-[20px] mr-[7px]">
                       범죄점수
                     </span>
                     이 곳은 범죄로부터 얼마나 안전할까?
@@ -161,12 +169,16 @@ function ChoicePage() {
                     {btnList.map((el, idx) => (
                       <button
                         key={idx}
-                        style={{ backgroundColor: "#" + el }}
-                        className={`rounded-full md:text-[22px] text-[20px] hover:text-[20px] md:w-[43px] md:h-[43px] w-[43px] h-[43px] shadow hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] ${
+                        style={{
+                          borderColor: "#" + el,
+                          backgroundColor:
+                            tempRoundResult[1] === idx + 1 ? "#" + el : "white",
+                        }}
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[1] === idx + 1
-                            ? "md:h-[52px] md:w-[52px] w-[43px] h-[43px] md:border-[1px] border-[1px] border-[#656565] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]"
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]`
                             : ""
                         }`}
                         onClick={() =>
@@ -178,10 +190,10 @@ function ChoicePage() {
                     ))}
                   </div>
                   <div className="flex w-full justify-between px-[8px]">
-                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[14px]">
+                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[12px]">
                       위험
                     </h5>
-                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[14px]">
+                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[12px]">
                       안전
                     </h5>
                   </div>
@@ -190,7 +202,7 @@ function ChoicePage() {
             </div>
 
             <button
-              className="md:w-[800px] w-[300px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-2.5 py-1.5 shadow-md md:mt-0 mt-1"
+              className="md:w-[800px] w-[300px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-2.5 py-1.5 mb-[15px] shadow-md md:mt-0 mt-1"
               onClick={handleClick}
             >
               {"다음"}
