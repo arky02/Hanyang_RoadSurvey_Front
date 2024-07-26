@@ -202,7 +202,7 @@ function ChoicePage() {
             </div>
 
             <button
-              className="md:w-[800px] w-[300px] hover:bg-[#0091ff] hover:text-white border-[#0091ff] border-[1px] rounded-2xl text-black font-semibold text-[16px] md:text-[17px] md:py-2.5 py-1.5 mb-[15px] shadow-md md:mt-0 mt-1"
+              className="md:w-[800px] w-[300px] hover:bg-[#0076d0] bg-[#0082e6] text-white border-[1px] rounded-2xl font-semibold text-[16px] md:text-[17px] md:py-2.5 py-1.5 mb-[15px] shadow-md md:mt-0 mt-1"
               onClick={handleClick}
             >
               {"다음"}
