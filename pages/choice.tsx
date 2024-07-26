@@ -24,7 +24,7 @@ function ChoicePage() {
   }, [age, sex]);
 
   let currRound = currImgIdx + 1;
-  const btnList = ["ff0000", "ff8409", "ffeb0a", "36f339", "4d95fb"];
+  const btnList = ["ff0000", "ff8409", "ffeb0a", "00e74b", "4d95fb"];
   function handleClick() {
     if ((tempRoundResult[0] || tempRoundResult[1]) === -1) {
       alert("답변을 선택 해 주세요.");
