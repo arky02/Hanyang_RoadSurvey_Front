@@ -132,11 +132,11 @@ function ChoicePage() {
                           backgroundColor:
                             tempRoundResult[0] === idx + 1 ? "#" + el : "white",
                         }}
-                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[0] === idx + 1
-                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]`
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[25px] md:hover:text-[25px]`
                             : ""
                         }`}
                         onClick={() =>
@@ -174,11 +174,11 @@ function ChoicePage() {
                           backgroundColor:
                             tempRoundResult[1] === idx + 1 ? "#" + el : "white",
                         }}
-                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[33px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[1.5px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[1] === idx + 1
-                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[33px] md:hover:text-[33px]`
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[25px] md:hover:text-[25px]`
                             : ""
                         }`}
                         onClick={() =>
