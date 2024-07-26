@@ -117,8 +117,8 @@ function ChoicePage() {
               )}
               <section className="flex flex-col md:w-[500px] w-[310px] md:mt-5  mt-3 gap-[10px]">
                 <div className="flex flex-col">
-                  <div className="text-[16px] md:text-[18px]">
-                    <span className="font-bold text-[15px] md:text-[20px] mr-[7px]">
+                  <div className="text-[15px] md:text-[18px]">
+                    <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
                       교통점수
                     </span>
                     이 곳을 걷는다면 얼마나 안전할까?
@@ -159,8 +159,8 @@ function ChoicePage() {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-[16px] md:text-[18px]">
-                    <span className="font-bold text-[15px] md:text-[20px] mr-[7px]">
+                  <div className="text-[15px] md:text-[18px]">
+                    <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
                       범죄점수
                     </span>
                     이 곳은 범죄로부터 얼마나 안전할까?
