@@ -121,7 +121,8 @@ function ChoicePage() {
                     <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
                       교통점수
                     </span>
-                    이 곳을 걷는다면 얼마나 안전할까?
+                    <p className="md:hidden" />이 길을 걷는다면 교통사고로부터
+                    얼마나 안전할까?
                   </div>
                   <div className="flex justify-between md:h-[55px] h-[52px] items-center">
                     {btnList.map((el, idx) => (
@@ -132,11 +133,11 @@ function ChoicePage() {
                           backgroundColor:
                             tempRoundResult[0] === idx + 1 ? "#" + el : "white",
                         }}
-                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[2px] border-[#${el}] ${
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px]  md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[2px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[0] === idx + 1
-                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[25px] md:hover:text-[25px]`
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] md:text-[25px] md:hover:text-[25px] font-bold md:font-medium`
                             : ""
                         }`}
                         onClick={() =>
@@ -163,7 +164,8 @@ function ChoicePage() {
                     <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
                       범죄점수
                     </span>
-                    이 곳은 범죄로부터 얼마나 안전할까?
+                    <p className="md:hidden" />이 길을 걷는다면 범죄로부터
+                    얼마나 안전할까?
                   </div>
                   <div className="flex justify-between md:h-[55px] h-[52px] items-center">
                     {btnList.map((el, idx) => (
@@ -174,11 +176,11 @@ function ChoicePage() {
                           backgroundColor:
                             tempRoundResult[1] === idx + 1 ? "#" + el : "white",
                         }}
-                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] hover:text-[22px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[2px] border-[#${el}] ${
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[2px] border-[#${el}] ${
                           isImgRendered && "ease-in-out duration-150"
                         } ${
                           tempRoundResult[1] === idx + 1
-                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] text-[22px] hover:text-[22px] md:text-[25px] md:hover:text-[25px]`
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] md:text-[25px] md:hover:text-[25px] font-bold md:font-medium`
                             : ""
                         }`}
                         onClick={() =>
