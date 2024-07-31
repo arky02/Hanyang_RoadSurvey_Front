@@ -107,7 +107,7 @@ function ChoicePage() {
             <div className="flex relative flex-col md:w-full w-full items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
-                  src={`https://raw.githubusercontent.com/arky02/roadvsimgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
+                  src={`https://raw.githubusercontent.com/arky02/Hanyang_RoadSurvey_Imgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
                   className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-fit md:w-fit md:h-[330px]"
                   alt="img"
                   width={410}
