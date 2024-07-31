@@ -106,8 +106,8 @@ function ChoicePage() {
             </div>
             <div className="flex relative flex-col md:w-full w-[472px] items-center ">
               {randImgNumList[currImgIdx] && (
-                <img
-                  src={`https//poppop-bucket.s3.ap-northeast-2.amazonaws.com/roadvs/${randImgNumList[currImgIdx]}.png`}
+                <Image
+                  src={`https://raw.githubusercontent.com/arky02/Hanyang_RoadSurvey_Imgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
                   className="border-[5px] md:hover:border-[#0091ff85] border-[#ffffff] rounded-md w-[450px] h-fit md:w-fit md:h-[330px]"
                   alt="img"
                   width={410}
