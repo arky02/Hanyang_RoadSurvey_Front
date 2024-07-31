@@ -104,7 +104,7 @@ function ChoicePage() {
             <div className="lg:hidden block absolute top-[65px] md:top-[26px] md:left-[45px] left-[20px] w-[40px] h-[40px] rounded-full shadow-md flex items-center justify-center text-[15px] text-[#FFFFFF] bg-[#0091ff] font-bold">
               {currImgIdx + 1}R
             </div>
-            <div className="flex relative flex-col md:w-full w-[472px] items-center ">
+            <div className="flex relative flex-col md:w-full w-full items-center ">
               {randImgNumList[currImgIdx] && (
                 <Image
                   src={`https://raw.githubusercontent.com/arky02/Hanyang_RoadSurvey_Imgs/master/roadimgs/${randImgNumList[currImgIdx]}.png`}
