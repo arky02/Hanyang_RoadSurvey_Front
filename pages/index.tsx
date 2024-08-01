@@ -35,8 +35,8 @@ export default function Home() {
       <section className="rounded-2xl w-[700px] md:shadow-md py-[10px] flex items-center justify-center md:mt-[70px] md:bg-white">
         <div className="flex flex-col md:gap-[50px] gap-[30px] md:gap-[50px] w-fit items-center md:items-start">
           <section className="rounded-2xl bg-white flex flex-col justify-evenly md:px-10 md:w-[500px] items-center md:h-[500px] bg-[#0091ff20] shadow-md md:shadow-none md:gap-[10px] gap-[35px] px-[20px] py-[35px] mx-[10px]">
-            <h3 className="md:text-[20px] text-[17px] text-[#2f2f2f] md:w-fit font-bold  ">
-              1. 설문자의 연령대과 성별을 선택해주세요
+            <h3 className="md:text-[22px] text-[17px] text-[#2f2f2f] md:w-fit font-bold  ">
+              설문자의 연령대과 성별을 선택해주세요
             </h3>
             <div className="flex flex-col items-start gap-[10px] md:gap-[20px] w-full">
               <h3 className="md:text-[18px] text-[16px] font-medium">
