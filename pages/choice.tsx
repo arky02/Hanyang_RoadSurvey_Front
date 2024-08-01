@@ -5,11 +5,14 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MutatingDots } from "react-loader-spinner";
 
+const COLOR_LIST = ["ff0000", "ff8409", "ffeb0a", "00e74b", "4d95fb"];
 function ChoicePage() {
   const [currImgIdx, setCurrImgIdx] = useState<number>(0);
   const [randImgNumList, setRandImgNumList] = useState<number[]>([]);
   const [isImgRendered, setIsImgRendered] = useState(false);
-  const [tempRoundResult, setTempRoundResult] = useState<number[]>([-1, -1]); // 라운드 별 결과 저장
+  const [tempRoundResult, setTempRoundResult] = useState<number[]>([
+    -1, -1, -1,
+  ]); // 라운드 별 결과 저장
   const [resultList, setResultList] = useState<string[]>([]);
   const [userInfo, setUserInfo] = useState({ age: "", sex: "" });
 
@@ -24,9 +27,10 @@ function ChoicePage() {
   }, [age, sex]);
 
   let currRound = currImgIdx + 1;
-  const btnList = ["ff0000", "ff8409", "ffeb0a", "00e74b", "4d95fb"];
   function handleClick() {
-    if ((tempRoundResult[0] || tempRoundResult[1]) === -1) {
+    if (
+      (tempRoundResult[0] || tempRoundResult[1] || tempRoundResult[2]) === -1
+    ) {
       alert("답변을 선택 해 주세요.");
       return;
     }
@@ -41,6 +45,7 @@ function ChoicePage() {
         img_name: String(randImgNumList[currImgIdx]),
         transport_score: tempRoundResult[0],
         crime_score: tempRoundResult[1],
+        walk_satisfaction: tempRoundResult[2],
       });
     console.log("=== SQL Query 전송 ===");
     console.log({
@@ -49,15 +54,16 @@ function ChoicePage() {
       img_name: String(randImgNumList[currImgIdx]),
       transport_score: tempRoundResult[0],
       crime_score: tempRoundResult[1],
+      walk_satisfaction: tempRoundResult[2],
     });
 
     // resultList : 전체 결과 리스트
     setResultList((prev) => [
       ...prev,
-      `${randImgNumList[currImgIdx]}:${tempRoundResult[0]},${tempRoundResult[1]}`,
+      `${randImgNumList[currImgIdx]}:${tempRoundResult[0]},${tempRoundResult[1]},${tempRoundResult[2]}`,
     ]);
 
-    setTempRoundResult([-1, -1]);
+    setTempRoundResult([-1, -1, -1]);
 
     // 다음 라운드로 이동
     setCurrImgIdx((prev) => prev + 1);
@@ -75,12 +81,12 @@ function ChoicePage() {
   }, []);
 
   return (
-    <main className="flex justify-center items-center md:h-[100vh] md:bg-[#0091ff4d] w-full">
+    <main className="flex justify-center items-center md:py-8 md:bg-[#0091ff4d] w-full">
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
         성동구 보행 환경 인식에 대한 설문
       </div>
       {currImgIdx <= 19 ? (
-        <section className="bg-white md:py-[30px] rounded-2xl mt-[73px] md:relative md:h-[740px] h-fit">
+        <section className="bg-white md:py-[30px] rounded-2xl mt-[73px] md:relative md:h-[860px] h-fit">
           <div className="w-full h-[3px] absolute md:top-[0.2px] top-[44px] md:px-[8.5px] md:rounded-full left-[0px]">
             <div className="w-full h-full bg-[#ebebeb] md:rounded-full relative"></div>
             <div
@@ -115,17 +121,17 @@ function ChoicePage() {
                   onLoad={() => setIsImgRendered(true)}
                 />
               )}
-              <section className="flex flex-col md:w-[500px] w-[310px] md:mt-5  mt-3 gap-[10px]">
+              <section className="flex flex-col md:w-[500px] w-[310px] md:mt-5  mt-3 gap-[16px]">
                 <div className="flex flex-col">
-                  <div className="text-[15px] md:text-[18px]">
+                  <div className="text-[14px] md:text-[18px]">
                     <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
-                      교통점수
+                      1. 교통점수
                     </span>
                     <p className="md:hidden" />이 길을 걷는다면 교통사고로부터
                     얼마나 안전할까?
                   </div>
                   <div className="flex justify-between md:h-[55px] h-[52px] items-center">
-                    {btnList.map((el, idx) => (
+                    {COLOR_LIST.map((el, idx) => (
                       <button
                         key={idx}
                         style={{
@@ -141,34 +147,29 @@ function ChoicePage() {
                             : ""
                         }`}
                         onClick={() =>
-                          setTempRoundResult((prev) =>
-                            prev[1] ? [idx + 1, prev[1]] : [idx + 1]
-                          )
+                          setTempRoundResult((prev) => [
+                            idx + 1,
+                            prev[1],
+                            prev[2],
+                          ])
                         }
                       >
                         {idx + 1}
                       </button>
                     ))}
                   </div>
-                  <div className="flex w-full justify-between px-[8px]">
-                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[12px]">
-                      위험
-                    </h5>
-                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[12px]">
-                      안전
-                    </h5>
-                  </div>
+                  <SelectButtonText />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-[15px] md:text-[18px]">
+                  <div className="text-[14px] md:text-[18px]">
                     <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
-                      범죄점수
+                      2. 범죄점수
                     </span>
                     <p className="md:hidden" />이 길을 걷는다면 범죄로부터
                     얼마나 안전할까?
                   </div>
                   <div className="flex justify-between md:h-[55px] h-[52px] items-center">
-                    {btnList.map((el, idx) => (
+                    {COLOR_LIST.map((el, idx) => (
                       <button
                         key={idx}
                         style={{
@@ -184,21 +185,56 @@ function ChoicePage() {
                             : ""
                         }`}
                         onClick={() =>
-                          setTempRoundResult((prev) => [prev[0], idx + 1])
+                          setTempRoundResult((prev) => [
+                            prev[0],
+                            idx + 1,
+                            prev[2],
+                          ])
                         }
                       >
                         {idx + 1}
                       </button>
                     ))}
                   </div>
-                  <div className="flex w-full justify-between px-[8px]">
-                    <h5 className="text-[#b10d0d] font-bold md:text-[16px] text-[12px]">
-                      위험
-                    </h5>
-                    <h5 className="text-[#0d12b1] font-bold md:text-[16px] text-[12px]">
-                      안전
-                    </h5>
+                  <SelectButtonText />
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-[14px] md:text-[18px]">
+                    <span className="font-bold text-[16px] md:text-[20px] mr-[7px]">
+                      3. 보행 만족도
+                    </span>
+                    <p className="md:hidden" /> 이 길의 보행 만족도를
+                    평가해주세요.
                   </div>
+                  <div className="flex justify-between md:h-[55px] h-[52px] items-center">
+                    {COLOR_LIST.map((el, idx) => (
+                      <button
+                        key={idx}
+                        style={{
+                          borderColor: "#" + el,
+                          backgroundColor:
+                            tempRoundResult[2] === idx + 1 ? "#" + el : "white",
+                        }}
+                        className={`rounded-full md:text-[22px] text-[18px] hover:text-[18px] md:w-[43px] md:h-[43px] w-[37px] h-[37px] shadow-md hover:shadow-xl md:hover:text-[25px] md:hover:h-[52px] md:hover:w-[52px] hover:h-[43px] hover:w-[43px] border-[2px] border-[#${el}] ${
+                          isImgRendered && "ease-in-out duration-150"
+                        } ${
+                          tempRoundResult[2] === idx + 1
+                            ? `md:h-[52px] md:w-[52px] w-[42px] h-[42px] md:text-[25px] md:hover:text-[25px] font-bold md:font-medium`
+                            : ""
+                        }`}
+                        onClick={() =>
+                          setTempRoundResult((prev) => [
+                            prev[0],
+                            prev[1],
+                            idx + 1,
+                          ])
+                        }
+                      >
+                        {idx + 1}
+                      </button>
+                    ))}
+                  </div>
+                  <SelectButtonText isWalkSatisfaction={true} />
                 </div>
               </section>
             </div>
@@ -245,4 +281,41 @@ function ChoicePage() {
   );
 }
 
+const SelectButtonText = ({
+  isWalkSatisfaction = false,
+}: {
+  isWalkSatisfaction?: boolean;
+}) => {
+  return (
+    <div className="flex w-full justify-between ">
+      <h5 className={`text-[#303030] font-bold md:text-[13px] text-[12px]`}>
+        {isWalkSatisfaction ? "매우 만족" : "매우 위험"}
+      </h5>
+      <h5
+        className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
+          isWalkSatisfaction ? "md:-ml-3.5 -ml-[12px]" : ""
+        }`}
+      >
+        {isWalkSatisfaction ? "만족" : "조금 위험"}
+      </h5>
+      <h5
+        className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
+          isWalkSatisfaction ? "pl-[4px]" : "px-5"
+        }`}
+      >
+        {"보통"}
+      </h5>
+      <h5
+        className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
+          isWalkSatisfaction ? "md:-mr-8 -mr-[27px]" : ""
+        }`}
+      >
+        {isWalkSatisfaction ? "불만족" : "조금 안전"}
+      </h5>
+      <h5 className={`text-[#303030] font-bold md:text-[14px] text-[12px]`}>
+        {isWalkSatisfaction ? "매우 불만족" : "매우 안전"}
+      </h5>
+    </div>
+  );
+};
 export default ChoicePage;

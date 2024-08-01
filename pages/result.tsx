@@ -31,6 +31,7 @@ export default function Result() {
         el.img_name,
         String(el.transport_score),
         String(el.crime_score),
+        String(el.walk_satisfaction),
       ]),
     ];
 
@@ -83,6 +84,7 @@ export default function Result() {
             img_name: "이미지 이름",
             transport_score: "교통점수",
             crime_score: "범죄점수",
+            walk_satisfaction: "보행 만족도",
             isHeader: true,
           })}
 
@@ -127,6 +129,7 @@ const makeTableRow = ({
   img_name,
   transport_score,
   crime_score,
+  walk_satisfaction,
   isHeader,
 }: {
   _id: number | string;
@@ -135,6 +138,7 @@ const makeTableRow = ({
   img_name: string;
   transport_score: number | string;
   crime_score: number | string;
+  walk_satisfaction: number | string;
   isHeader?: boolean;
 }) => (
   <div key={_id} className={`flex ${isHeader && "bg-[#5bcff9]"}`}>
@@ -175,6 +179,13 @@ const makeTableRow = ({
       }`}
     >
       {crime_score}
+    </div>
+    <div
+      className={`md:w-[100px] w-[45px] border-[1px] border-[#000000] text-center text-[11px] md:text-[16px] ${
+        isHeader && "font-bold text-[13px] md:text-[18px]"
+      }`}
+    >
+      {walk_satisfaction}
     </div>
   </div>
 );

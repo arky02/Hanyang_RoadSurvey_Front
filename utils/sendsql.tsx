@@ -6,6 +6,7 @@ interface SqlProps {
   img_name: string;
   transport_score: number;
   crime_score: number;
+  walk_satisfaction: number;
 }
 
 export const SendSQLQuery = async ({
@@ -14,6 +15,7 @@ export const SendSQLQuery = async ({
   img_name,
   transport_score,
   crime_score,
+  walk_satisfaction,
 }: SqlProps) => {
   let response = "";
   try {
@@ -23,6 +25,7 @@ export const SendSQLQuery = async ({
       img_name: img_name,
       transport_score: transport_score,
       crime_score: crime_score,
+      walk_satisfaction: walk_satisfaction,
     });
   } catch {
     alert("서버 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.");
