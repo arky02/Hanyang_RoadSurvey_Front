@@ -289,31 +289,31 @@ const SelectButtonText = ({
   return (
     <div className="flex w-full justify-between ">
       <h5 className={`text-[#303030] font-bold md:text-[13px] text-[12px]`}>
-        {isWalkSatisfaction ? "매우 만족" : "매우 위험"}
+        {isWalkSatisfaction ? "매우 불만족" : "매우 위험"}
       </h5>
       <h5
         className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
-          isWalkSatisfaction ? "md:-ml-3.5 -ml-[12px]" : ""
+          isWalkSatisfaction ? "md:-ml-[32px] -ml-[30px]" : ""
         }`}
       >
-        {isWalkSatisfaction ? "만족" : "조금 위험"}
+        {isWalkSatisfaction ? "불만족" : "조금 위험"}
       </h5>
       <h5
         className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
-          isWalkSatisfaction ? "pl-[4px]" : "px-5"
+          isWalkSatisfaction ? "md:pr-[4px]" : "px-5"
         }`}
       >
         {"보통"}
       </h5>
       <h5
         className={`text-[#303030] font-bold md:text-[14px] text-[12px] ${
-          isWalkSatisfaction ? "md:-mr-8 -mr-[27px]" : ""
+          isWalkSatisfaction ? "md:-mr-[15px] -mr-[10px]" : ""
         }`}
       >
-        {isWalkSatisfaction ? "불만족" : "조금 안전"}
+        {isWalkSatisfaction ? "만족" : "조금 안전"}
       </h5>
       <h5 className={`text-[#303030] font-bold md:text-[14px] text-[12px]`}>
-        {isWalkSatisfaction ? "매우 불만족" : "매우 안전"}
+        {isWalkSatisfaction ? "매우 만족" : "매우 안전"}
       </h5>
     </div>
   );
