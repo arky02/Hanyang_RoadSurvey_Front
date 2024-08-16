@@ -83,7 +83,7 @@ function ChoicePage() {
   return (
     <main className="flex justify-center items-center md:py-8 md:bg-[#0091ff4d] w-full">
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px] ">
-        성동구 보행 환경 인식에 대한 설문
+        서울시 보행 환경 인식에 대한 설문
       </div>
       {currImgIdx <= 19 ? (
         <section className="bg-white md:py-[30px] rounded-2xl mt-[73px] md:relative md:h-[860px] h-fit">
