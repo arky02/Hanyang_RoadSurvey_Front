@@ -30,7 +30,7 @@ export default function Home() {
         Admin
       </button>
       <div className="top-0 absolute bg-[#0091ff] w-full text-white font-semibold text-center md:p-5 p-3 md:text-[20px] text-[15px]">
-        성동구 보행 환경 인식에 대한 설문
+        서울시 보행 환경 인식에 대한 설문
       </div>
       <section className="rounded-2xl w-[700px] md:shadow-md py-[10px] flex items-center justify-center md:mt-[70px] md:bg-white">
         <div className="flex flex-col md:gap-[50px] gap-[30px] md:gap-[50px] w-fit items-center md:items-start">
